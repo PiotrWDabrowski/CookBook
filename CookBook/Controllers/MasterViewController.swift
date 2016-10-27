@@ -79,6 +79,16 @@ class MasterViewController: UITableViewController {
         cell.recipeImage.image = nil
         cell.recipeImage.backgroundColor = UIColor.lightGrayColor()
         
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), {
+            ImageManager.sharedInstance.fetchImage(recipe.imageUrl) { (image: UIImage) in
+                if (cell.tag == indexPath.row) {
+                    dispatch_async(dispatch_get_main_queue(),{
+                        cell.recipeImage.image = image
+                    })
+                }
+            }
+        })
+        
         return cell
     }
 }
