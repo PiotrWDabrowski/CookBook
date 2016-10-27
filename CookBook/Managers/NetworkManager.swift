@@ -30,8 +30,8 @@ class NetworkManager {
                             let recipe : Recipe = Recipe(title:  subJson["title"].string!, detailedDescription: subJson["description"].string!, imageUrl: subJson["images"][0]["url"].string!)
                             recipes.append(recipe)
                         }
-                        completion(recipes)
                     }
+                    completion(recipes)
                 }
                 else {
                     completion([])
