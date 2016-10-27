@@ -14,6 +14,21 @@ extension MasterViewController: UISearchResultsUpdating {
     }
 }
 
+extension UIView {
+    func showActivityIndicatory() -> UIActivityIndicatorView
+    {
+        let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
+        activityIndicator.frame = CGRectMake(0.0, 0.0, 40.0, 40.0);
+        activityIndicator.center = CGPointMake(self.frame.width/2, self.frame.height/2)
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.activityIndicatorViewStyle =
+            UIActivityIndicatorViewStyle.White
+        self.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+        return activityIndicator
+    }
+}
+
 class MasterViewController: UITableViewController {
     
     let searchController = UISearchController(searchResultsController: nil)
@@ -79,10 +94,12 @@ class MasterViewController: UITableViewController {
         cell.recipeImage.image = nil
         cell.recipeImage.backgroundColor = UIColor.lightGrayColor()
         
+        let indicator : UIActivityIndicatorView = cell.recipeImage.showActivityIndicatory()
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), {
             ImageManager.sharedInstance.fetchImage(recipe.imageUrl) { (image: UIImage) in
                 if (cell.tag == indexPath.row) {
                     dispatch_async(dispatch_get_main_queue(),{
+                        indicator.stopAnimating()
                         cell.recipeImage.image = image
                     })
                 }
