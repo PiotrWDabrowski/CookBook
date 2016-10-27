@@ -16,6 +16,10 @@
 		A006703E1DC27A5000B34219 /* CookBookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A006703D1DC27A5000B34219 /* CookBookTests.swift */; };
 		A006704D1DC27E0C00B34219 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A006704C1DC27E0C00B34219 /* MasterViewController.swift */; };
 		A006704F1DC27EBC00B34219 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A006704E1DC27EBC00B34219 /* DetailViewController.swift */; };
+		A00670511DC285F800B34219 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00670501DC285F800B34219 /* Recipe.swift */; };
+		A00670521DC285F800B34219 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00670501DC285F800B34219 /* Recipe.swift */; };
+		A00670571DC28AF200B34219 /* MasterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00670561DC28AF200B34219 /* MasterTableViewCell.swift */; };
+		A00670581DC28AF200B34219 /* MasterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00670561DC28AF200B34219 /* MasterTableViewCell.swift */; };
 		A0CFF5C2C0C52948A16F2B41 /* Pods_CookBookTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B42503E1D90C39DC108C21 /* Pods_CookBookTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +48,8 @@
 		A006703F1DC27A5000B34219 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A006704C1DC27E0C00B34219 /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		A006704E1DC27EBC00B34219 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		A00670501DC285F800B34219 /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
+		A00670561DC28AF200B34219 /* MasterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterTableViewCell.swift; sourceTree = "<group>"; };
 		ACBD60F17EA364271B05304A /* Pods-CookBookTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CookBookTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CookBookTests/Pods-CookBookTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B43D6246BAB6D94747D17D1E /* Pods-CookBook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CookBook.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CookBook/Pods-CookBook.debug.xcconfig"; sourceTree = "<group>"; };
 		DB1F16CE1C7FB9ED37EBCC6C /* Pods-CookBookTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CookBookTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CookBookTests/Pods-CookBookTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -147,6 +153,7 @@
 		A006704A1DC27D9B00B34219 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A00670501DC285F800B34219 /* Recipe.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -154,6 +161,7 @@
 		A006704B1DC27D9B00B34219 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A00670561DC28AF200B34219 /* MasterTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -359,9 +367,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A006702E1DC27A5000B34219 /* CookBook.xcdatamodeld in Sources */,
+				A00670571DC28AF200B34219 /* MasterTableViewCell.swift in Sources */,
 				A00670261DC27A5000B34219 /* AppDelegate.swift in Sources */,
 				A006704D1DC27E0C00B34219 /* MasterViewController.swift in Sources */,
 				A006704F1DC27EBC00B34219 /* DetailViewController.swift in Sources */,
+				A00670511DC285F800B34219 /* Recipe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,6 +380,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A006703E1DC27A5000B34219 /* CookBookTests.swift in Sources */,
+				A00670581DC28AF200B34219 /* MasterTableViewCell.swift in Sources */,
+				A00670521DC285F800B34219 /* Recipe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
