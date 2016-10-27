@@ -8,6 +8,16 @@
 
 import Foundation
 
+extension String {
+    func escapeHTMLCharacters() -> String
+    {
+        var escapedString : String
+        escapedString = self.stringByReplacingOccurrencesOfString("<br >", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        escapedString = self.stringByReplacingOccurrencesOfString("<br />", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        return escapedString
+    }
+}
+
 class Recipe {
     var title : String
     var detailedDescription : String
@@ -20,10 +30,10 @@ class Recipe {
         self.imageUrl = ""
         
         if title != nil {
-            self.title = title!
+            self.title = title!.escapeHTMLCharacters()
         }
         if detailedDescription != nil {
-            self.detailedDescription = detailedDescription!
+            self.detailedDescription = detailedDescription!.escapeHTMLCharacters()
         }
         if imageUrl != nil {
             self.imageUrl = imageUrl!

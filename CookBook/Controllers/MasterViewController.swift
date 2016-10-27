@@ -23,10 +23,12 @@ class MasterViewController: UITableViewController {
     override func viewDidLoad() {
         self.initSearchBar()
         
-        recipes = [
-                Recipe(title: "Test123 abc", detailedDescription: "BSSSJE", imageUrl: nil),
-                Recipe(title: "Zupa dyniowa", detailedDescription: "Z dyni", imageUrl: nil)
-        ]
+        NetworkManager.sharedInstance.fetchRecipes(self.recipes.count, completion: { (recipes: [Recipe]?) in
+            if recipes != nil {
+                self.recipes = recipes!
+            }
+            self.tableView.reloadData()
+        });
         
         super.viewDidLoad()
     }
