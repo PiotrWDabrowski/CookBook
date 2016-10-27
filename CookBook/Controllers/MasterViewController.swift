@@ -77,6 +77,7 @@ class MasterViewController: UITableViewController {
         cell.recipeTextLabel!.text = recipe.title
         cell.recipeDetailedTextLabel!.text = recipe.detailedDescription
         cell.recipeImage.image = nil
+        cell.recipeImage.backgroundColor = UIColor.lightGrayColor()
         
         return cell
     }
