@@ -9,12 +9,13 @@
 /* Begin PBXBuildFile section */
 		65843C75B9BC7E38C07F212B /* Pods_CookBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C88DB9C65D2B12DC5007955 /* Pods_CookBook.framework */; };
 		A00670261DC27A5000B34219 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00670251DC27A5000B34219 /* AppDelegate.swift */; };
-		A00670281DC27A5000B34219 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00670271DC27A5000B34219 /* ViewController.swift */; };
 		A006702B1DC27A5000B34219 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A00670291DC27A5000B34219 /* Main.storyboard */; };
 		A006702E1DC27A5000B34219 /* CookBook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A006702C1DC27A5000B34219 /* CookBook.xcdatamodeld */; };
 		A00670301DC27A5000B34219 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A006702F1DC27A5000B34219 /* Assets.xcassets */; };
 		A00670331DC27A5000B34219 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A00670311DC27A5000B34219 /* LaunchScreen.storyboard */; };
 		A006703E1DC27A5000B34219 /* CookBookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A006703D1DC27A5000B34219 /* CookBookTests.swift */; };
+		A006704D1DC27E0C00B34219 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A006704C1DC27E0C00B34219 /* MasterViewController.swift */; };
+		A006704F1DC27EBC00B34219 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A006704E1DC27EBC00B34219 /* DetailViewController.swift */; };
 		A0CFF5C2C0C52948A16F2B41 /* Pods_CookBookTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B42503E1D90C39DC108C21 /* Pods_CookBookTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,7 +34,6 @@
 		98B42503E1D90C39DC108C21 /* Pods_CookBookTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CookBookTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A00670221DC27A5000B34219 /* CookBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CookBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A00670251DC27A5000B34219 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A00670271DC27A5000B34219 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A006702A1DC27A5000B34219 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A006702D1DC27A5000B34219 /* CookBook.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CookBook.xcdatamodel; sourceTree = "<group>"; };
 		A006702F1DC27A5000B34219 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -42,6 +42,8 @@
 		A00670391DC27A5000B34219 /* CookBookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CookBookTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A006703D1DC27A5000B34219 /* CookBookTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookBookTests.swift; sourceTree = "<group>"; };
 		A006703F1DC27A5000B34219 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A006704C1DC27E0C00B34219 /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		A006704E1DC27EBC00B34219 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		ACBD60F17EA364271B05304A /* Pods-CookBookTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CookBookTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CookBookTests/Pods-CookBookTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B43D6246BAB6D94747D17D1E /* Pods-CookBook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CookBook.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CookBook/Pods-CookBook.debug.xcconfig"; sourceTree = "<group>"; };
 		DB1F16CE1C7FB9ED37EBCC6C /* Pods-CookBookTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CookBookTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CookBookTests/Pods-CookBookTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -111,8 +113,10 @@
 		A00670241DC27A5000B34219 /* CookBook */ = {
 			isa = PBXGroup;
 			children = (
+				A00670491DC27D9B00B34219 /* Controllers */,
+				A006704A1DC27D9B00B34219 /* Models */,
+				A006704B1DC27D9B00B34219 /* Views */,
 				A00670251DC27A5000B34219 /* AppDelegate.swift */,
-				A00670271DC27A5000B34219 /* ViewController.swift */,
 				A00670291DC27A5000B34219 /* Main.storyboard */,
 				A006702F1DC27A5000B34219 /* Assets.xcassets */,
 				A00670311DC27A5000B34219 /* LaunchScreen.storyboard */,
@@ -129,6 +133,29 @@
 				A006703F1DC27A5000B34219 /* Info.plist */,
 			);
 			path = CookBookTests;
+			sourceTree = "<group>";
+		};
+		A00670491DC27D9B00B34219 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A006704C1DC27E0C00B34219 /* MasterViewController.swift */,
+				A006704E1DC27EBC00B34219 /* DetailViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		A006704A1DC27D9B00B34219 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A006704B1DC27D9B00B34219 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -331,9 +358,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A00670281DC27A5000B34219 /* ViewController.swift in Sources */,
 				A006702E1DC27A5000B34219 /* CookBook.xcdatamodeld in Sources */,
 				A00670261DC27A5000B34219 /* AppDelegate.swift in Sources */,
+				A006704D1DC27E0C00B34219 /* MasterViewController.swift in Sources */,
+				A006704F1DC27EBC00B34219 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
