@@ -25,9 +25,9 @@ class NetworkManager {
             .responseJSON { response in
                 if let responseJson = response.result.value {
                     let json = JSON(responseJson)
-                    for (key, subJson) in json {
-                        if let title = subJson["title"].string {
-                            var recipe : Recipe = Recipe(title:  subJson["title"].string!, detailedDescription: subJson["description"].string!, imageUrl: subJson["images"][0]["url"].string!)
+                    for (_, subJson) in json {
+                        if (subJson["title"].string != nil) {
+                            let recipe : Recipe = Recipe(title:  subJson["title"].string!, detailedDescription: subJson["description"].string!, imageUrl: subJson["images"][0]["url"].string!)
                             recipes.append(recipe)
                         }
                         completion(recipes)
