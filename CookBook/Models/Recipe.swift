@@ -11,8 +11,12 @@ import Foundation
 
 struct Property {
     static let TITLE = "title"
-    static let DESCRIPTION = "detailedDescription"
-    static let IMAGE = "imageUrl"
+    static let DESCRIPTION = "description"
+    static let DETAIL_DESCRIPTION = "detailedDescription"
+    static let IMAGES = "images"
+    static let IMAGE_URL = "imageUrl"
+    static let RECIPE = "Recipe"
+    static let URL = "url"
 }
 
 extension String {
@@ -55,10 +59,10 @@ class Recipe {
         var title = object.valueForKey(Property.TITLE) as? String
         title = title==nil ? "" : title
         
-        var detailedDescription = object.valueForKey(Property.DESCRIPTION) as? String
+        var detailedDescription = object.valueForKey(Property.DETAIL_DESCRIPTION) as? String
         detailedDescription = detailedDescription==nil ? "" : detailedDescription
         
-        var imageUrl =  object.valueForKey(Property.IMAGE) as? String
+        var imageUrl =  object.valueForKey(Property.IMAGE_URL) as? String
         imageUrl = imageUrl==nil ? "" : imageUrl
         
         return Recipe(title: title, detailedDescription: detailedDescription, imageUrl:  imageUrl)
@@ -67,8 +71,8 @@ class Recipe {
     func managedObjectForRecipe(recipe: Recipe) -> NSManagedObject {
         let object = NSManagedObject()
         object.setValue(recipe.title, forKey: Property.TITLE)
-        object.setValue(recipe.detailedDescription, forKey: Property.DESCRIPTION)
-        object.setValue(recipe.imageUrl, forKey: Property.IMAGE)
+        object.setValue(recipe.detailedDescription, forKey: Property.DETAIL_DESCRIPTION)
+        object.setValue(recipe.imageUrl, forKey: Property.IMAGE_URL)
         return object
     }
 }

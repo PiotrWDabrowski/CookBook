@@ -24,7 +24,7 @@ class ObjectManager {
             var managedObjects : [NSManagedObject] = results  as! [NSManagedObject]
             
             if (managedObjects.count > from) {
-                managedObjects = Array(managedObjects[from..<from+20])
+                managedObjects = Array(managedObjects[from..<from+Networking.LIMIT])
             
                 for object in managedObjects {
                     recipes.append(Recipe.recipeForManagedObject(object))
@@ -58,8 +58,8 @@ class ObjectManager {
         for recipe in recipes {
             let recipeObject = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
             recipeObject.setValue(recipe.title, forKey: Property.TITLE)
-            recipeObject.setValue(recipe.detailedDescription, forKey: Property.DESCRIPTION)
-            recipeObject.setValue(recipe.imageUrl, forKey: Property.IMAGE)
+            recipeObject.setValue(recipe.detailedDescription, forKey: Property.DETAIL_DESCRIPTION)
+            recipeObject.setValue(recipe.imageUrl, forKey: Property.IMAGE_URL)
             
             do {
                 try managedContext.save()
