@@ -110,7 +110,6 @@ class MasterViewController: UITableViewController {
     }
     
     func loadMore() {
-        self.isLoadingMoreActive = true
         ObjectManager.sharedInstance.fetchRecipes(self.recipes.count, completion: { (recipes: [Recipe]?) in
             if recipes != nil {
                 self.recipes.appendContentsOf(recipes!)
