@@ -17,6 +17,11 @@ struct Property {
     static let IMAGE_URL = "imageUrl"
     static let RECIPE = "Recipe"
     static let URL = "url"
+    static let INGREDIENTS = "ingredients"
+    static let ELEMENTS = "elements"
+    static let NAME = "name"
+    static let AMOUNT = "amount"
+    static let UNIT_NAME = "unitName"
 }
 
 extension String {
@@ -25,6 +30,8 @@ extension String {
         var escapedString : String
         escapedString = self.stringByReplacingOccurrencesOfString("<br >", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
         escapedString = self.stringByReplacingOccurrencesOfString("<br />", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        escapedString = self.stringByReplacingOccurrencesOfString("<a >", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        escapedString = self.stringByReplacingOccurrencesOfString("</a>", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
         return escapedString
     }
 }
@@ -33,6 +40,7 @@ class Recipe {
     var title : String
     var detailedDescription : String
     var imageUrl : String
+    var ingredients : [Ingredient]
     
     init(title: String?, detailedDescription: String?, imageUrl: String?) {
         
@@ -49,6 +57,7 @@ class Recipe {
         if imageUrl != nil {
             self.imageUrl = imageUrl!
         }
+        self.ingredients = [Ingredient]()
     }
     
     func agreggatedString() -> String {

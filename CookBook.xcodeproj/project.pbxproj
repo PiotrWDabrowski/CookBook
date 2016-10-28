@@ -23,6 +23,7 @@
 		A006705F1DC2AF4400B34219 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A006705E1DC2AF4400B34219 /* NetworkManager.swift */; };
 		A00670611DC2AF5F00B34219 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00670601DC2AF5F00B34219 /* ImageManager.swift */; };
 		A00670631DC2CD4800B34219 /* ObjectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00670621DC2CD4800B34219 /* ObjectManager.swift */; };
+		A00670651DC307D800B34219 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00670641DC307D800B34219 /* Ingredient.swift */; };
 		A0CFF5C2C0C52948A16F2B41 /* Pods_CookBookTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B42503E1D90C39DC108C21 /* Pods_CookBookTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		A006705E1DC2AF4400B34219 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		A00670601DC2AF5F00B34219 /* ImageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		A00670621DC2CD4800B34219 /* ObjectManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectManager.swift; sourceTree = "<group>"; };
+		A00670641DC307D800B34219 /* Ingredient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		ACBD60F17EA364271B05304A /* Pods-CookBookTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CookBookTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CookBookTests/Pods-CookBookTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B43D6246BAB6D94747D17D1E /* Pods-CookBook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CookBook.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CookBook/Pods-CookBook.debug.xcconfig"; sourceTree = "<group>"; };
 		DB1F16CE1C7FB9ED37EBCC6C /* Pods-CookBookTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CookBookTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CookBookTests/Pods-CookBookTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				A00670501DC285F800B34219 /* Recipe.swift */,
+				A00670641DC307D800B34219 /* Ingredient.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -386,6 +389,7 @@
 			files = (
 				A006702E1DC27A5000B34219 /* CookBook.xcdatamodeld in Sources */,
 				A00670571DC28AF200B34219 /* MasterTableViewCell.swift in Sources */,
+				A00670651DC307D800B34219 /* Ingredient.swift in Sources */,
 				A00670261DC27A5000B34219 /* AppDelegate.swift in Sources */,
 				A00670631DC2CD4800B34219 /* ObjectManager.swift in Sources */,
 				A00670611DC2AF5F00B34219 /* ImageManager.swift in Sources */,

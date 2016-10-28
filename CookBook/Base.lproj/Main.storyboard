@@ -17,8 +17,46 @@
                     <view key="view" contentMode="scaleToFill" id="OY9-sR-B1d">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="irx-Zc-45s">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="277"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HnB-Zo-0Ru">
+                                <rect key="frame" x="8" y="285" width="584" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="V1U-MN-VcH">
+                                <rect key="frame" x="8" y="308" width="584" height="284"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="irx-Zc-45s" secondAttribute="trailing" constant="-20" id="1LS-Nm-Uf5"/>
+                            <constraint firstItem="V1U-MN-VcH" firstAttribute="top" secondItem="HnB-Zo-0Ru" secondAttribute="bottom" constant="2" id="Mvd-l5-nja"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="HnB-Zo-0Ru" secondAttribute="trailing" constant="-12" id="Rlw-y1-p9E"/>
+                            <constraint firstItem="HnB-Zo-0Ru" firstAttribute="centerX" secondItem="OY9-sR-B1d" secondAttribute="centerX" id="SFJ-gi-1O2"/>
+                            <constraint firstItem="irx-Zc-45s" firstAttribute="leading" secondItem="OY9-sR-B1d" secondAttribute="leadingMargin" constant="-20" id="SJd-BG-70x"/>
+                            <constraint firstItem="V1U-MN-VcH" firstAttribute="leading" secondItem="OY9-sR-B1d" secondAttribute="leadingMargin" constant="-20" id="ShP-Ub-0oW"/>
+                            <constraint firstItem="irx-Zc-45s" firstAttribute="centerX" secondItem="OY9-sR-B1d" secondAttribute="centerX" id="Yz1-0t-bdh"/>
+                            <constraint firstItem="DoS-aW-Ebn" firstAttribute="top" secondItem="V1U-MN-VcH" secondAttribute="bottom" constant="8" id="b1A-4A-oN2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="V1U-MN-VcH" secondAttribute="trailing" constant="-20" id="jIa-QP-wZw"/>
+                            <constraint firstItem="HnB-Zo-0Ru" firstAttribute="leading" secondItem="OY9-sR-B1d" secondAttribute="leadingMargin" constant="-12" id="jUm-gn-4G7"/>
+                            <constraint firstItem="irx-Zc-45s" firstAttribute="top" secondItem="IhD-ad-u9P" secondAttribute="bottom" constant="-20" id="qjW-qf-t0m"/>
+                            <constraint firstItem="HnB-Zo-0Ru" firstAttribute="top" secondItem="irx-Zc-45s" secondAttribute="bottom" constant="8" id="wZn-vi-LsH"/>
+                        </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <connections>
+                        <outlet property="recipeDetailedTextView" destination="V1U-MN-VcH" id="c73-ZC-iWr"/>
+                        <outlet property="recipeImage" destination="irx-Zc-45s" id="Yta-Ib-xSv"/>
+                        <outlet property="recipeTextLabel" destination="HnB-Zo-0Ru" id="oiO-Jq-RUm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z0P-86-W5z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

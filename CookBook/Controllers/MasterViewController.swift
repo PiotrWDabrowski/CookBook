@@ -29,8 +29,13 @@ extension UIView {
     }
 }
 
+protocol RecipeSelectionDelegate: class {
+    func selectRecipe(newRecipe: Recipe)
+}
+
 class MasterViewController: UITableViewController {
     
+    weak var delegate: RecipeSelectionDelegate?
     let searchController = UISearchController(searchResultsController: nil)
     var recipes = [Recipe]()
     var filteredRecipes = [Recipe]()
@@ -66,21 +71,13 @@ class MasterViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchController.active && searchController.searchBar.text != "" {
-            return filteredRecipes.count
-        }
-        return recipes.count
+        return self.activeRecipeArray().count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: MasterTableViewCell = tableView.dequeueReusableCellWithIdentifier("RecipeGeneralCell", forIndexPath: indexPath) as! MasterTableViewCell
         
-        let recipe: Recipe
-        if searchController.active && searchController.searchBar.text != "" {
-            recipe = self.filteredRecipes[indexPath.row]
-        } else {
-            recipe = self.recipes[indexPath.row]
-        }
+        let recipe: Recipe = self.activeRecipeArray()[indexPath.row]
         
         cell.tag = indexPath.row
         cell.recipeTextLabel!.text = recipe.title
@@ -109,6 +106,17 @@ class MasterViewController: UITableViewController {
         }
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let selectedRecipe = self.activeRecipeArray()[indexPath.row]
+        self.delegate?.selectRecipe(selectedRecipe)
+        
+        if let detailViewController = self.delegate as? DetailViewController {
+            
+            splitViewController?.showDetailViewController(detailViewController, sender: nil)
+        }
+    }
+    
     func loadMore() {
         ObjectManager.sharedInstance.fetchRecipes(self.recipes.count, completion: { (recipes: [Recipe]?) in
             if recipes != nil {
@@ -125,5 +133,12 @@ class MasterViewController: UITableViewController {
         }
         self.tableView.reloadData()
         self.refreshControl?.endRefreshing()
+    }
+    
+    func activeRecipeArray() -> [Recipe] {
+        if searchController.active && searchController.searchBar.text != "" {
+            return self.filteredRecipes
+        }
+        return self.recipes
     }
 }
