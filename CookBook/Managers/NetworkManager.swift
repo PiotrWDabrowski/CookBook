@@ -32,14 +32,12 @@ class NetworkManager {
                 if let responseJson = response.result.value {
                     let json = JSON(responseJson)
                     for (_, subJson) in json {
-                        var ingredients = [Ingredient]()
                         if (subJson[Property.TITLE].string != nil) {
                             let recipe : Recipe = Recipe(title:  subJson[Property.TITLE].string!, detailedDescription: subJson[Property.DESCRIPTION].string!, imageUrl: subJson[Property.IMAGES][0][Property.URL].string!)
                             for ingredientSubJSON in subJson[Property.INGREDIENTS][0][Property.ELEMENTS] {
                                 print(ingredientSubJSON.1[Property.AMOUNT].int)
                                 let ingredient : Ingredient = Ingredient(name: ingredientSubJSON.1[Property.NAME].string, amount: ingredientSubJSON.1[Property.AMOUNT].int, unitName: ingredientSubJSON.1[Property.UNIT_NAME].string)
-                                ingredients.append(ingredient)
-                                recipe.ingredients = ingredients
+                                recipe.ingredientsString = recipe.ingredientsString + "\n" + ingredient.agreggatedString()
                             }
                             recipes.append(recipe)
                         }

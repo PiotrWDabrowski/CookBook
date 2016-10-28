@@ -60,6 +60,7 @@ class ObjectManager {
             recipeObject.setValue(recipe.title, forKey: Property.TITLE)
             recipeObject.setValue(recipe.detailedDescription, forKey: Property.DETAIL_DESCRIPTION)
             recipeObject.setValue(recipe.imageUrl, forKey: Property.IMAGE_URL)
+            recipeObject.setValue(recipe.ingredientsString, forKey: Property.INGREDIENTS_STRING)
             
             do {
                 try managedContext.save()

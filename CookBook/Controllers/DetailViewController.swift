@@ -24,13 +24,7 @@ class DetailViewController: UIViewController, RecipeSelectionDelegate {
         
         if (recipe != nil) {
             self.recipeTextLabel.text = recipe!.title
-            self.recipeDetailedTextView.text = recipe!.detailedDescription+"\n"
-            
-            if let ingredients = recipe?.ingredients {
-                for ingredient in ingredients {
-                    self.recipeDetailedTextView.text = self.recipeDetailedTextView.text + "\n" + ingredient.agreggatedString()
-                }
-            }
+            self.recipeDetailedTextView.text = recipe!.detailedDescription+"\n"+recipe!.ingredientsString
             
             self.recipeImage.image = nil
             self.recipeImage.backgroundColor = UIColor.lightGrayColor()

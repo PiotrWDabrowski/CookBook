@@ -18,6 +18,7 @@ struct Property {
     static let RECIPE = "Recipe"
     static let URL = "url"
     static let INGREDIENTS = "ingredients"
+    static let INGREDIENTS_STRING = "ingredientsString"
     static let ELEMENTS = "elements"
     static let NAME = "name"
     static let AMOUNT = "amount"
@@ -41,6 +42,7 @@ class Recipe {
     var detailedDescription : String
     var imageUrl : String
     var ingredients : [Ingredient]
+    var ingredientsString : String
     
     init(title: String?, detailedDescription: String?, imageUrl: String?) {
         
@@ -58,6 +60,7 @@ class Recipe {
             self.imageUrl = imageUrl!
         }
         self.ingredients = [Ingredient]()
+        self.ingredientsString = ""
     }
     
     func agreggatedString() -> String {
@@ -74,7 +77,12 @@ class Recipe {
         var imageUrl =  object.valueForKey(Property.IMAGE_URL) as? String
         imageUrl = imageUrl==nil ? "" : imageUrl
         
-        return Recipe(title: title, detailedDescription: detailedDescription, imageUrl:  imageUrl)
+        var ingredientString = object.valueForKey(Property.INGREDIENTS_STRING) as? String
+        ingredientString = ingredientString==nil ? "" : ingredientString
+        
+        let recipe : Recipe = Recipe(title: title, detailedDescription: detailedDescription, imageUrl:  imageUrl)
+        recipe.ingredientsString = ingredientString!
+        return recipe
     }
     
     func managedObjectForRecipe(recipe: Recipe) -> NSManagedObject {
@@ -82,6 +90,7 @@ class Recipe {
         object.setValue(recipe.title, forKey: Property.TITLE)
         object.setValue(recipe.detailedDescription, forKey: Property.DETAIL_DESCRIPTION)
         object.setValue(recipe.imageUrl, forKey: Property.IMAGE_URL)
+        object.setValue(recipe.ingredientsString, forKey: Property.INGREDIENTS_STRING)
         return object
     }
 }
