@@ -36,16 +36,9 @@ class MasterViewController: UITableViewController {
     var filteredRecipes = [Recipe]()
     
     override func viewDidLoad() {
-        self.initSearchBar()
-        
-        NetworkManager.sharedInstance.fetchRecipes(self.recipes.count, completion: { (recipes: [Recipe]?) in
-            if recipes != nil {
-                self.recipes = recipes!
-            }
-            self.tableView.reloadData()
-        });
-        
         super.viewDidLoad()
+        self.initSearchBar()
+        self.loadMore()
     }
     
     // MARK: - SearchBar support
@@ -107,5 +100,20 @@ class MasterViewController: UITableViewController {
         })
         
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        if (self.recipes.count-1 == indexPath.row) {
+            self.loadMore()
+        }
+    }
+    
+    func loadMore() {
+        NetworkManager.sharedInstance.fetchRecipes(self.recipes.count, completion: { (recipes: [Recipe]?) in
+            if recipes != nil {
+                self.recipes.appendContentsOf(recipes!)
+            }
+            self.tableView.reloadData()
+        });
     }
 }
