@@ -21,7 +21,7 @@ class DetailViewController: UIViewController, RecipeSelectionDelegate {
     }
     
     override func viewDidAppear(animated: Bool) {
-        
+        super.viewDidAppear(animated)
         if (recipe != nil) {
             self.recipeTextLabel.text = recipe!.title
             self.recipeDetailedTextView.text = recipe!.detailedDescription+"\n"+recipe!.ingredientsString
