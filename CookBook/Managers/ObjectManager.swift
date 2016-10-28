@@ -57,9 +57,9 @@ class ObjectManager {
         
         for recipe in recipes {
             let recipeObject = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
-            recipeObject.setValue(recipe.title, forKey: "title")
-            recipeObject.setValue(recipe.detailedDescription, forKey: "detailedDescription")
-            recipeObject.setValue(recipe.imageUrl, forKey: "imageUrl")
+            recipeObject.setValue(recipe.title, forKey: Property.TITLE)
+            recipeObject.setValue(recipe.detailedDescription, forKey: Property.DESCRIPTION)
+            recipeObject.setValue(recipe.imageUrl, forKey: Property.IMAGE)
             
             do {
                 try managedContext.save()

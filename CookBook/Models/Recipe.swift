@@ -9,6 +9,12 @@
 import CoreData
 import Foundation
 
+struct Property {
+    static let TITLE = "title"
+    static let DESCRIPTION = "detailedDescription"
+    static let IMAGE = "imageUrl"
+}
+
 extension String {
     func escapeHTMLCharacters() -> String
     {
@@ -46,13 +52,13 @@ class Recipe {
     }
     
     static func recipeForManagedObject(object: NSManagedObject) -> Recipe {
-        var title = object.valueForKey("title") as? String
+        var title = object.valueForKey(Property.TITLE) as? String
         title = title==nil ? "" : title
         
-        var detailedDescription = object.valueForKey("detailedDescription") as? String
+        var detailedDescription = object.valueForKey(Property.DESCRIPTION) as? String
         detailedDescription = detailedDescription==nil ? "" : detailedDescription
         
-        var imageUrl =  object.valueForKey("imageUrl") as? String
+        var imageUrl =  object.valueForKey(Property.IMAGE) as? String
         imageUrl = imageUrl==nil ? "" : imageUrl
         
         return Recipe(title: title, detailedDescription: detailedDescription, imageUrl:  imageUrl)
@@ -60,9 +66,9 @@ class Recipe {
     
     func managedObjectForRecipe(recipe: Recipe) -> NSManagedObject {
         let object = NSManagedObject()
-        object.setValue(recipe.title, forKey: "title")
-        object.setValue(recipe.detailedDescription, forKey: "detailedDescription")
-        object.setValue(recipe.imageUrl, forKey: "imageUrl")
+        object.setValue(recipe.title, forKey: Property.TITLE)
+        object.setValue(recipe.detailedDescription, forKey: Property.DESCRIPTION)
+        object.setValue(recipe.imageUrl, forKey: Property.IMAGE)
         return object
     }
 }
