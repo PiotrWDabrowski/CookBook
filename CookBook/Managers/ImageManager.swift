@@ -32,8 +32,6 @@ class ImageManager {
                 }
             }
         }
-        else {
-            completion(UIImage())
-        }
+        completion(UIImage())
     }
 }
