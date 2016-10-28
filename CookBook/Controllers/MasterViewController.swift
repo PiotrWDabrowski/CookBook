@@ -112,7 +112,6 @@ class MasterViewController: UITableViewController {
         self.delegate?.selectRecipe(selectedRecipe)
         
         if let detailViewController = self.delegate as? DetailViewController {
-            
             splitViewController?.showDetailViewController(detailViewController, sender: nil)
         }
     }

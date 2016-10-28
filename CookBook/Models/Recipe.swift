@@ -28,11 +28,13 @@ struct Property {
 extension String {
     func escapeHTMLCharacters() -> String
     {
-        var escapedString : String
-        escapedString = self.stringByReplacingOccurrencesOfString("<br >", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
-        escapedString = self.stringByReplacingOccurrencesOfString("<br />", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
-        escapedString = self.stringByReplacingOccurrencesOfString("<a >", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
-        escapedString = self.stringByReplacingOccurrencesOfString("</a>", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        var escapedString : String = self
+        print(self.stringByReplacingOccurrencesOfString("<br />", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil))
+        escapedString = escapedString.stringByReplacingOccurrencesOfString("<br >", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        escapedString = escapedString.stringByReplacingOccurrencesOfString("<br />", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        escapedString = escapedString.stringByReplacingOccurrencesOfString("<a >", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        escapedString = escapedString.stringByReplacingOccurrencesOfString("</a>", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+
         return escapedString
     }
 }
