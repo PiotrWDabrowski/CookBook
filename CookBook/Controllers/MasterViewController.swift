@@ -39,6 +39,7 @@ class MasterViewController: UITableViewController {
         super.viewDidLoad()
         self.initSearchBar()
         self.loadMore()
+        self.refreshControl?.addTarget(self, action: #selector(MasterViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
     }
     
     // MARK: - SearchBar support
@@ -109,11 +110,21 @@ class MasterViewController: UITableViewController {
     }
     
     func loadMore() {
-        NetworkManager.sharedInstance.fetchRecipes(self.recipes.count, completion: { (recipes: [Recipe]?) in
+        self.isLoadingMoreActive = true
+        ObjectManager.sharedInstance.fetchRecipes(self.recipes.count, completion: { (recipes: [Recipe]?) in
             if recipes != nil {
                 self.recipes.appendContentsOf(recipes!)
             }
             self.tableView.reloadData()
         });
+    }
+    
+    func refresh(sender:AnyObject)
+    {
+        if (self.recipes.count == 0) {
+            self.loadMore()
+        }
+        self.tableView.reloadData()
+        self.refreshControl?.endRefreshing()
     }
 }

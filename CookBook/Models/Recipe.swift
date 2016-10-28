@@ -6,6 +6,7 @@
 //  Copyright © 2016 Piotr Dąbrowski. All rights reserved.
 //
 
+import CoreData
 import Foundation
 
 extension String {
@@ -42,5 +43,26 @@ class Recipe {
     
     func agreggatedString() -> String {
         return "\(self.title), \(self.detailedDescription)"
+    }
+    
+    static func recipeForManagedObject(object: NSManagedObject) -> Recipe {
+        var title = object.valueForKey("title") as? String
+        title = title==nil ? "" : title
+        
+        var detailedDescription = object.valueForKey("detailedDescription") as? String
+        detailedDescription = detailedDescription==nil ? "" : detailedDescription
+        
+        var imageUrl =  object.valueForKey("imageUrl") as? String
+        imageUrl = imageUrl==nil ? "" : imageUrl
+        
+        return Recipe(title: title, detailedDescription: detailedDescription, imageUrl:  imageUrl)
+    }
+    
+    func managedObjectForRecipe(recipe: Recipe) -> NSManagedObject {
+        let object = NSManagedObject()
+        object.setValue(recipe.title, forKey: "title")
+        object.setValue(recipe.detailedDescription, forKey: "detailedDescription")
+        object.setValue(recipe.imageUrl, forKey: "imageUrl")
+        return object
     }
 }
