@@ -39,12 +39,14 @@ class MasterViewController: UITableViewController {
     let searchController = UISearchController(searchResultsController: nil)
     var recipes = [Recipe]()
     var filteredRecipes = [Recipe]()
+    var isLoadingMore : Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initSearchBar()
         self.loadMore()
         self.refreshControl?.addTarget(self, action: #selector(MasterViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        self.isLoadingMore = false
     }
     
     // MARK: - SearchBar support
@@ -117,11 +119,18 @@ class MasterViewController: UITableViewController {
     }
     
     func loadMore() {
+        if (self.isLoadingMore) {
+            return
+        }
+        self.isLoadingMore = true
         ObjectManager.sharedInstance.fetchRecipes(self.recipes.count, completion: { (recipes: [Recipe]?) in
             if recipes != nil {
-                self.recipes.appendContentsOf(recipes!)
+                if (recipes?.count > 0) {
+                    self.recipes.appendContentsOf(recipes!)
+                    self.tableView.reloadData()
+                }
             }
-            self.tableView.reloadData()
+            self.isLoadingMore = false
         });
     }
     
