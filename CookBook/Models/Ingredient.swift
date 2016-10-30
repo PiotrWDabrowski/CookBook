@@ -9,15 +9,21 @@
 import CoreData
 import Foundation
 
+extension Float {
+    var pureFraction: String {
+        return self < 0 ? "" : self % 1 == 0 ? String(format: "%.0f", self) : String(self)
+    }
+}
+
 class Ingredient {
     var name : String
-    var amount : Int
+    var amount : Float
     var unitName : String
     
-    init(name: String?, amount: Int?, unitName: String?) {
+    init(name: String?, amount: Float?, unitName: String?) {
         
         self.name = ""
-        self.amount = 0
+        self.amount = -1
         self.unitName = ""
         
         if name != nil {
@@ -32,6 +38,6 @@ class Ingredient {
     }
     
     func agreggatedString() -> String {
-        return "\(self.name) -  \(self.amount)  \(self.unitName)"
+        return "\(self.name) -  \(self.amount.pureFraction) \(self.unitName)"
     }
 }
