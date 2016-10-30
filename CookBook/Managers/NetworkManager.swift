@@ -22,7 +22,6 @@ class NetworkManager {
     static let sharedInstance = NetworkManager()
     
     func fetchRecipes(from: Int, completion: ([Recipe]?) -> Void) {
-        var recipes = [Recipe]()
         Alamofire.request(
             .GET,
             Networking.BASE_URL+Networking.GET_DETAILS,
@@ -30,22 +29,26 @@ class NetworkManager {
             encoding: .URL)
             .responseJSON { response in
                 if let responseJson = response.result.value {
-                    let json = JSON(responseJson)
-                    for (_, subJson) in json {
-                        if (subJson[Property.TITLE].string != nil) {
-                            let recipe : Recipe = Recipe(title:  subJson[Property.TITLE].string!, detailedDescription: subJson[Property.DESCRIPTION].string!, imageUrl: subJson[Property.IMAGES][0][Property.URL].string!)
-                            for ingredientSubJSON in subJson[Property.INGREDIENTS][0][Property.ELEMENTS] {
-                                let ingredient : Ingredient = Ingredient(name: ingredientSubJSON.1[Property.NAME].string, amount: ingredientSubJSON.1[Property.AMOUNT].int, unitName: ingredientSubJSON.1[Property.UNIT_NAME].string)
-                                recipe.ingredientsString = recipe.ingredientsString + "\n" + ingredient.agreggatedString()
-                            }
-                            recipes.append(recipe)
-                        }
-                    }
-                    completion(recipes)
+                    completion(NetworkManager.parseRecipe(JSON(responseJson)))
                 }
                 else {
                     completion([])
                 }
         }
+    }
+    
+    static func parseRecipe(json: JSON) -> [Recipe] {
+        var recipes = [Recipe]()
+        for (_, subJson) in json {
+            if (subJson[Property.TITLE].string != nil) {
+                let recipe : Recipe = Recipe(title:  subJson[Property.TITLE].string!, detailedDescription: subJson[Property.DESCRIPTION].string!, imageUrl: subJson[Property.IMAGES][0][Property.URL].string!)
+                for ingredientSubJSON in subJson[Property.INGREDIENTS][0][Property.ELEMENTS] {
+                    let ingredient : Ingredient = Ingredient(name: ingredientSubJSON.1[Property.NAME].string, amount: ingredientSubJSON.1[Property.AMOUNT].int, unitName: ingredientSubJSON.1[Property.UNIT_NAME].string)
+                    recipe.ingredientsString = recipe.ingredientsString + "\n" + ingredient.agreggatedString()
+                }
+                recipes.append(recipe)
+            }
+        }
+        return recipes
     }
 }

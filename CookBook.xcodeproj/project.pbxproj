@@ -24,6 +24,9 @@
 		A00670611DC2AF5F00B34219 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00670601DC2AF5F00B34219 /* ImageManager.swift */; };
 		A00670631DC2CD4800B34219 /* ObjectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00670621DC2CD4800B34219 /* ObjectManager.swift */; };
 		A00670651DC307D800B34219 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00670641DC307D800B34219 /* Ingredient.swift */; };
+		A030EC951DC69953003141DD /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00670641DC307D800B34219 /* Ingredient.swift */; };
+		A030EC981DC69C1B003141DD /* getSingleRecipeDetailed.json in Resources */ = {isa = PBXBuildFile; fileRef = A030EC971DC69C1B003141DD /* getSingleRecipeDetailed.json */; };
+		A030EC991DC6A390003141DD /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A006705E1DC2AF4400B34219 /* NetworkManager.swift */; };
 		A0CFF5C2C0C52948A16F2B41 /* Pods_CookBookTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98B42503E1D90C39DC108C21 /* Pods_CookBookTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +61,7 @@
 		A00670601DC2AF5F00B34219 /* ImageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		A00670621DC2CD4800B34219 /* ObjectManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectManager.swift; sourceTree = "<group>"; };
 		A00670641DC307D800B34219 /* Ingredient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
+		A030EC971DC69C1B003141DD /* getSingleRecipeDetailed.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = getSingleRecipeDetailed.json; sourceTree = "<group>"; };
 		ACBD60F17EA364271B05304A /* Pods-CookBookTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CookBookTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CookBookTests/Pods-CookBookTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B43D6246BAB6D94747D17D1E /* Pods-CookBook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CookBook.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CookBook/Pods-CookBook.debug.xcconfig"; sourceTree = "<group>"; };
 		DB1F16CE1C7FB9ED37EBCC6C /* Pods-CookBookTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CookBookTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CookBookTests/Pods-CookBookTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -144,6 +148,7 @@
 		A006703C1DC27A5000B34219 /* CookBookTests */ = {
 			isa = PBXGroup;
 			children = (
+				A030EC961DC69C0C003141DD /* JSON */,
 				A006703D1DC27A5000B34219 /* CookBookTests.swift */,
 				A006703F1DC27A5000B34219 /* Info.plist */,
 			);
@@ -186,6 +191,14 @@
 			name = Managers;
 			path = CookBook/Managers;
 			sourceTree = SOURCE_ROOT;
+		};
+		A030EC961DC69C0C003141DD /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				A030EC971DC69C1B003141DD /* getSingleRecipeDetailed.json */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -284,6 +297,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A030EC981DC69C1B003141DD /* getSingleRecipeDetailed.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,7 +418,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A030EC951DC69953003141DD /* Ingredient.swift in Sources */,
 				A006703E1DC27A5000B34219 /* CookBookTests.swift in Sources */,
+				A030EC991DC6A390003141DD /* NetworkManager.swift in Sources */,
 				A00670581DC28AF200B34219 /* MasterTableViewCell.swift in Sources */,
 				A00670521DC285F800B34219 /* Recipe.swift in Sources */,
 			);

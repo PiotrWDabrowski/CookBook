@@ -7,6 +7,8 @@
 //
 
 import XCTest
+import SwiftyJSON
+
 @testable import CookBook
 
 class CookBookTests: XCTestCase {
@@ -21,15 +23,18 @@ class CookBookTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
+    func testRecipeParse() {
+        let bundle = NSBundle(forClass: self.dynamicType)
+        let path = bundle.pathForResource("getSingleRecipeDetailed", ofType: "json")
+        if let data = NSData(contentsOfFile: path!) {
+            XCTAssertNotNil(data)
+            let json = JSON(data: data)
+            let recipes: [Recipe] = NetworkManager.parseRecipe(json)
+            XCTAssertNotNil(recipes)
+            XCTAssertNotNil(recipes.first?.title)
+            XCTAssertNotNil(recipes.first?.detailedDescription)
+            XCTAssertNotNil(recipes.first?.imageUrl)
+            XCTAssertNotNil(recipes.first?.ingredientsString)
         }
     }
     
