@@ -29,6 +29,23 @@ extension UIView {
     }
 }
 
+extension NSData {
+    var attributedString: NSAttributedString? {
+        do {
+            return try NSAttributedString(data: self, options:[NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: NSUTF8StringEncoding], documentAttributes: nil)
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+        return nil
+    }
+}
+
+extension String {
+    var utf8Data: NSData? {
+        return dataUsingEncoding(NSUTF8StringEncoding)
+    }
+}
+
 protocol RecipeSelectionDelegate: class {
     func selectRecipe(newRecipe: Recipe)
 }
@@ -83,7 +100,7 @@ class MasterViewController: UITableViewController {
         
         cell.tag = indexPath.row
         cell.recipeTextLabel!.text = recipe.title
-        cell.recipeDetailedTextLabel!.text = recipe.detailedDescription
+        cell.recipeDetailedTextLabel!.attributedText = recipe.detailedDescription.utf8Data?.attributedString
         cell.recipeImage.image = nil
         cell.recipeImage.backgroundColor = UIColor.lightGrayColor()
         

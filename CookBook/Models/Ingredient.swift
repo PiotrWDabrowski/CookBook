@@ -27,7 +27,7 @@ class Ingredient {
         self.unitName = ""
         
         if name != nil {
-            self.name = name!.escapeHTMLCharacters()
+            self.name = name!
         }
         if amount != nil {
             self.amount = amount!

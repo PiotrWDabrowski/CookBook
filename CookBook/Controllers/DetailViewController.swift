@@ -33,7 +33,8 @@ class DetailViewController: UIViewController, RecipeSelectionDelegate {
                 recipeTextLabel.text = recipe!.title
             }
             if let recipeDetailedTextView = self.recipeDetailedTextView {
-                recipeDetailedTextView.text = recipe!.detailedDescription+"\n"+recipe!.ingredientsString
+                let detailsString = recipe!.detailedDescription+"<br />"+recipe!.ingredientsString
+                recipeDetailedTextView.attributedText = detailsString.utf8Data?.attributedString
             }
             if let recipeImage = self.recipeImage {
                 recipeImage.image = nil

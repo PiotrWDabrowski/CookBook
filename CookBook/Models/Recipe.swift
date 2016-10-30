@@ -52,10 +52,10 @@ class Recipe {
         self.imageUrl = ""
         
         if title != nil {
-            self.title = title!.escapeHTMLCharacters()
+            self.title = title!
         }
         if detailedDescription != nil {
-            self.detailedDescription = detailedDescription!.escapeHTMLCharacters()
+            self.detailedDescription = detailedDescription!
         }
         if imageUrl != nil {
             self.imageUrl = imageUrl!

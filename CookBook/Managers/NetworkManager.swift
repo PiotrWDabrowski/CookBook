@@ -44,7 +44,7 @@ class NetworkManager {
                 let recipe : Recipe = Recipe(title:  subJson[Property.TITLE].string!, detailedDescription: subJson[Property.DESCRIPTION].string!, imageUrl: subJson[Property.IMAGES][0][Property.URL].string!)
                 for ingredientSubJSON in subJson[Property.INGREDIENTS][0][Property.ELEMENTS] {
                     let ingredient : Ingredient = Ingredient(name: ingredientSubJSON.1[Property.NAME].string, amount: ingredientSubJSON.1[Property.AMOUNT].float, unitName: ingredientSubJSON.1[Property.UNIT_NAME].string)
-                    recipe.ingredientsString = recipe.ingredientsString + "\n" + ingredient.agreggatedString()
+                    recipe.ingredientsString = recipe.ingredientsString + "<br />" + ingredient.agreggatedString()
                 }
                 recipes.append(recipe)
             }
