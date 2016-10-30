@@ -18,19 +18,19 @@ class DetailViewController: UIViewController, RecipeSelectionDelegate {
 
     func selectRecipe(newRecipe: Recipe) {
         self.recipe = newRecipe
+        self.refreshUI()
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+    func refreshUI() {
         if (recipe != nil) {
-            self.recipeTextLabel.text = recipe!.title
-            self.recipeDetailedTextView.text = recipe!.detailedDescription+"\n"+recipe!.ingredientsString
-            
-            self.recipeImage.image = nil
-            self.recipeImage.backgroundColor = UIColor.lightGrayColor()
-            
-            if (self.recipeImage != nil) {
-                let indicator : UIActivityIndicatorView = self.recipeImage.showActivityIndicatory()
+        self.recipeTextLabel.text = recipe!.title
+        self.recipeDetailedTextView.text = recipe!.detailedDescription+"\n"+recipe!.ingredientsString
+    
+        self.recipeImage.image = nil
+        self.recipeImage.backgroundColor = UIColor.lightGrayColor()
+    
+        if (self.recipeImage != nil) {
+            let indicator : UIActivityIndicatorView = self.recipeImage.showActivityIndicatory()
                 dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), {
                     ImageManager.sharedInstance.fetchImage(self.recipe!.imageUrl) { (image: UIImage) in
                         dispatch_async(dispatch_get_main_queue(),{

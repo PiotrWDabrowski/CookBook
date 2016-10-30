@@ -29,7 +29,6 @@ extension String {
     func escapeHTMLCharacters() -> String
     {
         var escapedString : String = self
-        print(self.stringByReplacingOccurrencesOfString("<br />", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil))
         escapedString = escapedString.stringByReplacingOccurrencesOfString("<br >", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
         escapedString = escapedString.stringByReplacingOccurrencesOfString("<br />", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
         escapedString = escapedString.stringByReplacingOccurrencesOfString("<a >", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)

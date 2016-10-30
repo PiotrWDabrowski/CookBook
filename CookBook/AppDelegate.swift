@@ -18,18 +18,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         
         let splitViewController = window!.rootViewController as! UISplitViewController
         splitViewController.delegate = self
+        let leftNavController = splitViewController.viewControllers.first as! UINavigationController
+        let masterViewController = leftNavController.topViewController as! MasterViewController
+        let detailViewController = splitViewController.viewControllers.last as! DetailViewController
+        masterViewController.delegate = detailViewController
         
+        detailViewController.navigationItem.leftItemsSupplementBackButton = true
+        detailViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
         return true
     }
     
     // MARK: - Split view
     func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController:UIViewController, ontoPrimaryViewController primaryViewController:UIViewController) -> Bool {
         
-        let leftNavController = splitViewController.viewControllers.first as! UINavigationController
-        let masterViewController = leftNavController.topViewController as! MasterViewController
         let detailViewController = secondaryViewController as! DetailViewController
-        masterViewController.delegate = detailViewController
-        
         if detailViewController.recipe == nil {
             return true
         }
