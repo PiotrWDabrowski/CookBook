@@ -21,13 +21,24 @@ class DetailViewController: UIViewController, RecipeSelectionDelegate {
         self.refreshUI()
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        refreshUI()
+    }
+    
     func refreshUI() {
         if (recipe != nil) {
-        self.recipeTextLabel.text = recipe!.title
-        self.recipeDetailedTextView.text = recipe!.detailedDescription+"\n"+recipe!.ingredientsString
-    
-        self.recipeImage.image = nil
-        self.recipeImage.backgroundColor = UIColor.lightGrayColor()
+            if let recipeTextLabel = self.recipeTextLabel {
+                recipeTextLabel.text = recipe!.title
+            }
+            if let recipeDetailedTextView = self.recipeDetailedTextView {
+                recipeDetailedTextView.text = recipe!.detailedDescription+"\n"+recipe!.ingredientsString
+            }
+            if let recipeImage = self.recipeImage {
+                recipeImage.image = nil
+                recipeImage.backgroundColor = UIColor.lightGrayColor()
+            }
     
         if (self.recipeImage != nil) {
             let indicator : UIActivityIndicatorView = self.recipeImage.showActivityIndicatory()

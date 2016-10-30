@@ -17,12 +17,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         let splitViewController = window!.rootViewController as! UISplitViewController
-        splitViewController.delegate = self
         let leftNavController = splitViewController.viewControllers.first as! UINavigationController
+        let rightNavController = splitViewController.viewControllers.last as! UINavigationController
         let masterViewController = leftNavController.topViewController as! MasterViewController
-        let detailViewController = splitViewController.viewControllers.last as! DetailViewController
-        masterViewController.delegate = detailViewController
+        let detailViewController = rightNavController.viewControllers.last as! DetailViewController
         
+        splitViewController.delegate = self
+        masterViewController.delegate = detailViewController
         detailViewController.navigationItem.leftItemsSupplementBackButton = true
         detailViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
         return true
@@ -31,7 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     // MARK: - Split view
     func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController:UIViewController, ontoPrimaryViewController primaryViewController:UIViewController) -> Bool {
         
-        let detailViewController = secondaryViewController as! DetailViewController
+        let detailNavigationViewController = secondaryViewController as! UINavigationController
+        let detailViewController = detailNavigationViewController.topViewController as! DetailViewController
         if detailViewController.recipe == nil {
             return true
         }
